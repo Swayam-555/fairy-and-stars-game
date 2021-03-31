@@ -12,14 +12,14 @@ function preload()
 	starImg = loadImage("star.png");
 	fairyImg = loadAnimation("fairyImage1.png","fairyImage2.png");
 	bgImg = loadImage("starNight.png");
-	fairyVoice = loadSound("sound/JoyMusic.mp3");
+	fairyVoice = loadSound("JoyMusic.mp3");
 
 }
 
 function setup() {
 	createCanvas(800, 750);
 
-	// fairyVoice.play();
+	 fairyVoice.play();
 
 	fairy = createSprite(130, 520);
 	fairy.addAnimation("fairyflying",fairyImg);  
@@ -32,7 +32,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	starBody = Bodies.circle(650 , 30 , 5 , {restitution:0.5, isStatic:true});
+	starBody = Bodies.circle(650 , 30 , 5 , {restitution:0.5, isStatic:false});
 	World.add(world, starBody);
 	
 	Engine.run(engine);
@@ -43,15 +43,9 @@ function setup() {
 function draw() {
   background(bgImg);
 
-	//Engine.update(engine);
+	Engine.update(engine);
 
-  if(keyDown(LEFT_ARROW)){
-     fairy.velocityX = fairy.velocityX -1;
-  }
-
-  if(keyDown(RIGHT_ARROW)){
-	fairy.velocityX = fairy.velocityX +1;
- }
+  
   
 
   keyPressed();
@@ -65,6 +59,12 @@ function draw() {
 function keyPressed() {
 	//write code here
 
-
+	if(keyDown(LEFT_ARROW)){
+		fairy.velocityX = fairy.velocityX -1;
+	 }
+   
+	 if(keyDown(RIGHT_ARROW)){
+	   fairy.velocityX = fairy.velocityX +1;
+	}
 
 }
