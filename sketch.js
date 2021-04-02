@@ -60,11 +60,15 @@ function keyPressed() {
 	//write code here
 
 	if(keyDown(LEFT_ARROW)){
-		fairy.velocityX = fairy.velocityX -1;
+		fairy.x = fairy.x -1;
 	 }
    
+	  if (keyCode === DOWN_ARROW) { 
+	 	 Matter.Body.setStatic(starBody,false)
+ 	}
+
 	 if(keyDown(RIGHT_ARROW)){
-	   fairy.velocityX = fairy.velocityX +1;
+	   fairy.x = fairy.x +1;
 	}
 
 }
